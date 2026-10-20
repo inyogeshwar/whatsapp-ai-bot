@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+
+# Environment & secrets — NEVER commit these
+.env
+.env.local
+
+# WhatsApp authentication/session data — SENSITIVE.
+# These files are the "private keys" of your WhatsApp session.
+# Anyone who obtains them can impersonate your account.
+auth/
+
+# Login QR image (like auth/, it grants access — never commit)
+qr.png
+
+# Persistent bot settings (per-group configuration)
+data/*.json
+!data/.gitkeep
+
+# Separate project with its own repository (pairing-code web service)
+pairing-web/
+
+# Logs
+logs/
+*.log
+
+# OS noise
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
