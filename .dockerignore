@@ -1,0 +1,18 @@
+node_modules
+npm-debug.log*
+
+# Secrets and session state — never bake these into an image
+.env
+auth
+data
+qr.png
+
+# Repository tooling and docs
+.git
+.github
+docs
+pairing-web
+*.md
+!README.md
+
+tests
