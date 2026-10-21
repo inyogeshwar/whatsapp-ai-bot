@@ -9,6 +9,7 @@ It links to WhatsApp the same way WhatsApp Web does, then answers **34 commands*
 ![Tests](https://img.shields.io/badge/tests-89%20passing-2ee59d?style=flat-square)
 ![License](https://img.shields.io/badge/license-MIT-6f7880?style=flat-square)
 ![No database](https://img.shields.io/badge/database-none-6f7880?style=flat-square)
+[![Pairing UI](https://img.shields.io/badge/pairing%20UI-wa--pair--code-2ee59d?style=flat-square)](https://github.com/inyogeshwar/wa-pair-code)
 
 ---
 
@@ -26,6 +27,7 @@ It links to WhatsApp the same way WhatsApp Web does, then answers **34 commands*
 - [Project layout](#project-layout)
 - [Troubleshooting](#troubleshooting)
 - [Security model](#security-model)
+- [Responsible use & ban risk](#responsible-use--ban-risk)
 - [License](#license)
 
 ---
@@ -495,6 +497,37 @@ See [ARCHITECTURE.md](./ARCHITECTURE.md) for the full design and [PRD.md](./PRD.
 - **Backups:** `data/` is safe to back up (group preferences only). **`auth/` is not** — never put it in a repo, a shared drive, or a chat.
 
 If a session is compromised, unlink the device in **WhatsApp → Linked Devices**, delete `auth/`, and link again.
+
+---
+
+## Responsible use & ban risk
+
+This bot uses **Baileys, an unofficial WhatsApp client**. WhatsApp's Terms of Service prohibit unofficial clients, and enforcement is real: numbers do get banned. Linking this bot is a calculated risk, not a supported configuration. The project is not affiliated with WhatsApp or Meta.
+
+What actually gets a number banned:
+
+| Trigger | Why it matters |
+|---|---|
+| **Bulk or unsolicited messages** | The biggest cause by far: cold DMs, broadcast lists, scraped numbers, mass group invites. |
+| **Reports and blocks** | Enough recipients tapping *Report* or *Block* is treated as spam even when the text itself looks harmless. |
+| **A new number sending at volume** | A number created today that messages dozens of strangers tomorrow gets flagged almost immediately. |
+| **High-volume automation** | Identical messages, no inbound replies, constant rate — the pattern matters more than the content. |
+| **Unofficial clients** | Against the Terms, including this one. Enforcement is uneven, not absent. |
+
+What is **not** a ban:
+
+- A failed pairing, an expired code, `401` / `device_removed`, or *"Couldn't link device"* are session problems. If WhatsApp on the phone still sends and receives normally, the number is fine.
+- Repeated link attempts can trigger a temporary *"try again later"* limit. It clears on its own.
+
+The safest way to run it:
+
+- Use a **separate number** for the bot — never your personal primary. If it gets restricted, your life does not stop.
+- Let a new number warm up: a week or two of ordinary chatting before automation.
+- Reply to people who message you; do not start conversations with strangers. Keep volume human.
+- No bulk broadcasts, no scraped contact lists, no group-invite spam. Keep `.tagall` cooldowns on.
+- Stop the bot if WhatsApp shows a warning banner, and re-read the rules before restarting.
+
+If a number does get banned, appeal in the app (**Settings → Help → Request a review**) or through [WhatsApp Support](https://www.whatsapp.com/contact/). Creating replacement numbers to keep spamming escalates to device- and business-level blocks.
 
 ---
 

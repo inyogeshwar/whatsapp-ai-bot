@@ -22,6 +22,14 @@
     "ollama"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inyogeshwar/whatsapp-ai-bot.git"
+  },
+  "homepage": "https://github.com/inyogeshwar/whatsapp-ai-bot#readme",
+  "bugs": {
+    "url": "https://github.com/inyogeshwar/whatsapp-ai-bot/issues"
+  },
   "dependencies": {
     "@hapi/boom": "^10.0.1",
     "@whiskeysockets/baileys": "7.0.0-rc14",
